@@ -31,15 +31,19 @@ const ValoAcad = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    name,
-                    age,
-                    email,
-                    agent
-                }),
-
-
+                body: JSON.stringify(formData),
+            
             })
+            if(response.ok){
+                const result = await response.json();
+                alert("form submitted successfully");
+                console.log("API response: ", result);
+                console.log("form submission successful");
+
+            } else{
+                alert("Error submitting form");
+                console.error("API error", response.statusText);
+            }
 
 
         } catch (error) {
